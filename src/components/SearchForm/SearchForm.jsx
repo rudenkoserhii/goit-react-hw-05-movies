@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { SearchFormInput, SearchFormButtonLabel, SearchFormButton, SearchForm, SearchbarStyled } from './Searchbar.styled';
+import { SearchFormInput, SearchFormButtonLabel, SearchFormButton, SearchForm } from './SearchForm.styled';
 import Notiflix from 'notiflix';
 import PropTypes from 'prop-types';
-
 
 export const Searchbar = ({ onSubmit }) => {
 
@@ -19,7 +18,7 @@ export const Searchbar = ({ onSubmit }) => {
            Notiflix.Notify.failure('No search word entered!');
             return;
         }
-        onSubmit(value, 1);
+        onSubmit(value);
         setValue('');
 
         e.target.reset();
@@ -27,8 +26,7 @@ export const Searchbar = ({ onSubmit }) => {
 
 
     return (
-        <SearchbarStyled className="Searchbar" onSubmit={handleSubmit}>
-        <SearchForm className="SearchForm">
+        <SearchForm className="SearchForm" onSubmit={handleSubmit}>
             <SearchFormButton type="submit" className="SearchForm-button">
                 {<SearchFormButtonLabel className="SearchForm-button-label">Search</SearchFormButtonLabel>}
             </SearchFormButton>
@@ -38,11 +36,10 @@ export const Searchbar = ({ onSubmit }) => {
                 type="text"
                 autoComplete="off"
                 autoFocus
-                placeholder="Search images and photos"
+                placeholder="Search movies"
                 onChange={onChange}
             />
         </SearchForm>
-        </SearchbarStyled>
 )};
 
 Searchbar.propTypes = {

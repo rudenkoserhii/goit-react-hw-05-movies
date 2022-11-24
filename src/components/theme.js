@@ -5,6 +5,7 @@ export const theme = {
     gray: 'gray',
     lightblue: 'aquamarine',
     red: 'red',
+    lightred: 'rgba(100, 0, 0, 0.1)',
     green: 'green',
     lightgray: 'lightgray',
   },

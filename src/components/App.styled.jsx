@@ -9,7 +9,7 @@ export const Wrap = styled.div`
 `;
 
 
-export const ErrorMessage = styled.p`
+export const ErrorMessage = styled.div`
     font-family: inherit;
     font-size: 18px;
     line-height: 24px;
