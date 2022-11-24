@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getTrending } from '../API/API';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MoviesListStyled, Title, TitleMovie, ListItem, Img } from "../Movies/Movies.styled";
 import { Loader } from '../Loader/Loader';
 import { ErrorMessage } from '../App.styled';
@@ -13,6 +13,8 @@ const HomePage = () => {
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState('false');
     const [error, setError] = useState(null);
+
+    const location = useLocation();
 
 
   useEffect( () => {
@@ -49,7 +51,7 @@ const HomePage = () => {
         <MoviesListStyled>
             {movies.map(({ title, id, name, poster_path, tagline }) => 
             <ListItem key={id}>
-              <Link to={`movies/${id}`} relative="path">
+              <Link to={`movies/${id}`} relative="path"  state={{ from: location }}>
                 <TitleMovie>{title??name}</TitleMovie>
                 <Img src={(!poster_path) ? image : `https://image.tmdb.org/t/p/w200${poster_path}`} alt={tagline} width="200"/>
               </Link>

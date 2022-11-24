@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { getMovieDetails } from '../API/API';
 import { MovieDetailsStyled, LinkStyled, Wrap, WrapSecond, Title, TitleSecond } from "./MovieDetails.styled";
 import { Outlet } from "react-router-dom";
@@ -16,7 +16,8 @@ const MovieDetails = () => {
   const [error, setError] = useState(null);
 
 
-  const navigate = useNavigate();
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? "/";
 
   useEffect(() => {
 
@@ -47,7 +48,7 @@ const MovieDetails = () => {
       {(error !== null) && <ErrorMessage>{error.message}</ErrorMessage>}
       {(isLoading === 'true') && <Loader/>}
     <MovieDetailsStyled>
-    <LinkStyled onClick={() => navigate(-1, {replace: true}) || navigate('/', {replace: true})}>Go back</LinkStyled>
+    <LinkStyled to={backLinkHref}>Go back</LinkStyled>
     <Wrap>
       <img src={(!poster_path) ? image : `https://image.tmdb.org/t/p/w300${poster_path}`} alt={tagline} width="300"/>
         <WrapSecond>
