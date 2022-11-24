@@ -7,11 +7,11 @@ import { lazy } from 'react';
 // import { Reviews } from './MovieDetails/Reviews';
 // import { Movies } from './Movies/Movies';
 
-const HomePage = lazy(() => import('./HomePage/HomePage'));
-const Movies = lazy(() => import('./Movies/Movies'));
-const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
-const Cast = lazy(() => import('./MovieDetails/Cast'));
-const Reviews = lazy(() => import('./MovieDetails/Reviews'));
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const Movies = lazy(() => import('../pages/Movies/Movies'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('../pages/MovieDetails/Cast'));
+const Reviews = lazy(() => import('../pages/MovieDetails/Reviews'));
 
 export const App = () => {
   return (

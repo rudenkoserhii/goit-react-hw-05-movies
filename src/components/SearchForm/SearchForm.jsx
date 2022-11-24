@@ -3,23 +3,23 @@ import { SearchFormInput, SearchFormButtonLabel, SearchFormButton, SearchForm } 
 import Notiflix from 'notiflix';
 import PropTypes from 'prop-types';
 
-export const Searchbar = ({ onSubmit, value }) => {
+export const Searchbar = ({ onSubmit }) => {
 
-    const [v, setV] = useState('');
+    const [query, setQuery] = useState('');
 
     const onChange = e => {
-        setV(e.currentTarget.value.toLowerCase());
+        setQuery(e.currentTarget.value.toLowerCase());
         };
 
     const handleSubmit = e => {
         e.preventDefault();
 
-        if (v.trim() === '') {
+        if (query.trim() === '') {
            Notiflix.Notify.failure('No search word entered!');
             return;
         }
-        onSubmit(v);
-        setV('');
+        onSubmit(query);
+        setQuery('');
 
         e.target.reset();
     };
@@ -39,7 +39,6 @@ export const Searchbar = ({ onSubmit, value }) => {
                 autoFocus
                 placeholder="Search movies"
                 onChange={onChange}
-                value={v}
             />
         </SearchForm>
 )};
