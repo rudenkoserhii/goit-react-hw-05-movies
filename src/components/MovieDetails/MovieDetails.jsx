@@ -5,13 +5,10 @@ import { MovieDetailsStyled, LinkStyled, Wrap, WrapSecond, Title, TitleSecond } 
 import { Outlet } from "react-router-dom";
 import { Loader } from '../Loader/Loader';
 import { ErrorMessage } from '../App.styled';
-
-
-
 import image from './else.jpg';
 
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
 
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
@@ -82,3 +79,5 @@ export const MovieDetails = () => {
       </Suspense>
     </MovieDetailsStyled></>);
 };
+
+export default MovieDetails;

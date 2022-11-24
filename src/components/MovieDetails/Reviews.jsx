@@ -7,7 +7,7 @@ import { ErrorMessage } from '../App.styled';
 
 
 
-export const Reviews = () => {
+const Reviews = () => {
 
   const { movieId } = useParams();
   const [infos, setInfos] = useState(null);
@@ -50,3 +50,5 @@ export const Reviews = () => {
     </AdditionalStyled>
     </>);
 };
+
+export default Reviews;

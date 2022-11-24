@@ -7,11 +7,7 @@ import { Loader } from '../Loader/Loader';
 import { ErrorMessage } from '../App.styled';
 import image from '../MovieDetails/else.jpg';
 
-
-
-
-
-export const Movies = () => {
+const Movies = () => {
 
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
@@ -60,3 +56,5 @@ export const Movies = () => {
         {(error !== null) && <ErrorMessage>{error.message}</ErrorMessage>}
         </>
 )};
+
+export default Movies;

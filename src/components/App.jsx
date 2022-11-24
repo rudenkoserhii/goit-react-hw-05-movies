@@ -1,17 +1,17 @@
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
-import { HomePage } from './HomePage/HomePage';
-// import { lazy } from 'react';
-import { MovieDetails } from './MovieDetails/MovieDetails';
-import { Cast } from './MovieDetails/Cast';
-import { Reviews } from './MovieDetails/Reviews';
-import { Movies } from './Movies/Movies';
+// import { HomePage } from './HomePage/HomePage';
+import { lazy } from 'react';
+// import { MovieDetails } from './MovieDetails/MovieDetails';
+// import { Cast } from './MovieDetails/Cast';
+// import { Reviews } from './MovieDetails/Reviews';
+// import { Movies } from './Movies/Movies';
 
-
-// const Movies = lazy(() => import('./Movies/Movies'));
-// const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
-// const Cast = lazy(() => import('./MovieDetails/Cast'));
-// const Reviews = lazy(() => import('./MovieDetails/Reviews'));
+const HomePage = lazy(() => import('./HomePage/HomePage'));
+const Movies = lazy(() => import('./Movies/Movies'));
+const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('./MovieDetails/Cast'));
+const Reviews = lazy(() => import('./MovieDetails/Reviews'));
 
 export const App = () => {
   return (

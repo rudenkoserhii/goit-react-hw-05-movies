@@ -6,7 +6,7 @@ import { Loader } from '../Loader/Loader';
 import { ErrorMessage } from '../App.styled';
 import image from './else.jpg';
 
-export const Cast = () => {
+const Cast = () => {
 
   const { movieId } = useParams();
   const [infos, setInfos] = useState(null);
@@ -52,3 +52,5 @@ export const Cast = () => {
     </>);
     
 };
+
+export default Cast;
