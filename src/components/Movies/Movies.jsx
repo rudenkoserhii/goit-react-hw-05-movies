@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Searchbar } from '../SearchForm/SearchForm';
 import { searchMovies } from '../API/API';
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useSearchParams } from "react-router-dom"
 import { MoviesListStyled, TitleMovie, ListItem, Img } from "./Movies.styled"
 import { Loader } from '../Loader/Loader';
 import { ErrorMessage } from '../App.styled';
@@ -13,8 +13,9 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState('false');
   const [error, setError] = useState(null);
-
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
+
 
   useEffect( () => {
 
@@ -40,13 +41,16 @@ const Movies = () => {
     getMoviesBySearch ();
   }, [query]);
 
-  const onSubmit = (value) => {
-    setQuery(value);
+  const onSubmit = (valueProp) => {
+    setQuery(valueProp);
+    setSearchParams(valueProp !== "" ? { valueProp } : {});
   }
+
+  const movieName = searchParams.get("query") ?? "";
 
     return (
         <>
-        <Searchbar onSubmit={onSubmit} />
+        <Searchbar value={movieName} onSubmit={onSubmit} />
         <MoviesListStyled>
             {movies.map(({ title, id, name, poster_path, tagline }) => 
             <ListItem key={id}>
