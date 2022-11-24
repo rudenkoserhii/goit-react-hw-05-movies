@@ -45,9 +45,11 @@ const Movies = () => {
     setQuery(query);
     setSearchParams(query !== "" ? { query } : {});
   }
+  const movieName = searchParams.get("query") ?? "";
+
     return (
         <>
-        <Searchbar onSubmit={onSubmit} />
+        <Searchbar value={movieName} onSubmit={onSubmit} />
         <MoviesListStyled>
             {movies.map(({ title, id, name, poster_path, tagline }) => 
             <ListItem key={id}>
