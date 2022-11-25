@@ -9,13 +9,13 @@ import image from '../MovieDetails/else.jpg';
 
 const Movies = () => {
 
-  const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState('false');
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 
+const query = searchParams.get("query") ?? '';
 
   useEffect( () => {
 
@@ -42,19 +42,19 @@ const Movies = () => {
   }, [query]);
 
   const onSubmit = (query) => {
-    setQuery(query);
     setSearchParams(query !== "" ? { query } : {});
   }
-  const movieName = searchParams.get("query") ?? "";
 
     return (
         <>
-        <Searchbar value={movieName} onSubmit={onSubmit} />
+        <Searchbar onSubmit={onSubmit} />
         <MoviesListStyled>
             {movies.map(({ title, id, name, poster_path, tagline }) => 
             <ListItem key={id}>
               <Link to={`${id}`} state={{ from: location }}>
-<TitleMovie>{title??name}</TitleMovie><Img src={(!poster_path) ? image : `https://image.tmdb.org/t/p/w200${poster_path}`} alt={tagline} width="200"/></Link>
+                <TitleMovie>{title??name}</TitleMovie>
+                <Img src={(!poster_path) ? image : `https://image.tmdb.org/t/p/w200${poster_path}`} alt={tagline} width="200"/>
+              </Link>
             </ListItem>)}
         </MoviesListStyled>
         {(isLoading === 'true') && <Loader/>}
