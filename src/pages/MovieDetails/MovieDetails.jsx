@@ -69,10 +69,10 @@ const MovieDetails = () => {
     <TitleSecond>Additional information</TitleSecond>
     <ul>
       <li>
-        <LinkStyled to="cast" relative='route'>Cast</LinkStyled>
+        <LinkStyled to="cast" relative='route' state={{ from: location.state.from }}>Cast</LinkStyled>
       </li>
       <li>
-        <LinkStyled to="reviews" relative='route'>Reviews</LinkStyled>
+        <LinkStyled to="reviews" relative='route' state={{ from: location.state.from }}>Reviews</LinkStyled>
       </li>
     </ul>
       <Suspense fallback={null}>
